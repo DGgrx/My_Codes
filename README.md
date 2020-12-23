@@ -1,3 +1,3 @@
 # My_Codes
 
-These are my codes I will make during my learing period.
+These are my codes I will make during my learning period.
