@@ -13,5 +13,8 @@ int main()
     printf("b=",b); scanf("%f",&b);
     printf("c=",c); scanf("%f",&c);
     printf("The entered line is %.1fx+%.1fy+%.1f=0", a,b,c);
+if(ax+by+cz==0)
+    printf("The point lies on the line.");
+    printf("the point does not lie on the line.");
     return(0);
 }
