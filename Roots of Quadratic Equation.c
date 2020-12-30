@@ -10,7 +10,7 @@ int main()
     X2=(-b-sqrt((b*b)-(4*a*c)))/(2*a);
     if(((b*b)-(4*a*c))>=0)
     {
-        printf("Roots are = %.1f %.1f",X1,X2); 
+        printf("Roots are = %.1lf %.1lf",X1,X2); 
     }
     else
     {
