@@ -1,18 +1,19 @@
 #include <stdio.h>
 int main()
 {
-    double year;
+    int year;
     printf("Enter the year : ");
-    scanf("%lf", &year);
-    int q = year / 4;
+    scanf("%d", &year);
+    /*int q = year / 4;
     int r = year - (4 * q);
-    if (r == 0)
+    This was Old Logic until i learnt about % operand*/  
+    if (year % 4 == 0)
     {
-        printf("The year %.0lf is a leap year", year);
+        printf("The year %d is a leap year", year);
     }
     else
     {
-        printf("The year %.0lf is not a leap year", year);
+        printf("The year %d is not a leap year", year);
     }
-    return (0);
+    return 0;
 }
