@@ -84,7 +84,7 @@ struct node *deleteEndNodeN(struct node *head)
 {
     struct node *p = head;
     struct node *q = head->next;
-    for (i = 0; q->next != NULL; i++)
+    for (int i = 0; q->next != NULL; i++)
     {
         p = p->next;
         q = q->next;
@@ -94,14 +94,27 @@ struct node *deleteEndNodeN(struct node *head)
     return head;
 }
 
-// Deleting a particular node
-// struct node* deletePartiNode(struct node *givenNode)
-// {
-//     struct node *p = givenNode;
-//     givenNode=p->next;
-//     free(p);
-//     return givenNode;
-// }
+// Deleting a particular value
+struct node *deleteValue(struct node *head, int value)
+{
+    struct node *p = head;
+    struct node *q = head->next;
+    for (int i = 0; q->data != value && q->next != NULL; i++)
+    {
+        p = p->next;
+        q = q->next;
+    }
+    if (q->data == NULL)
+    {
+        printf("Value not found in the linked list.");
+    }
+    else
+    {
+        p->next = q->next;
+        free(q);
+    }
+    return head;
+}
 
 int main()
 {
@@ -130,8 +143,9 @@ int main()
     traversal(head);
     printf("\nLinked List after Deletion\n");
     // head = deleteHead(head);
-    // head = deleteAtIndex(head, 2);
-    // head = deleteEndNode(head);
+    // head = deleteAtIndexN(head, 2);
+    // head = deleteEndNodeN(head);
+    head = deleteValue(head, 34);
     traversal(head);
 
     return 0;
