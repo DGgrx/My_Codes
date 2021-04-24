@@ -43,6 +43,24 @@ struct node *deleteAtIndex(struct node *head, int index)
     free(q);
     return (head);
 }
+//This logic has a problem that we cannot delete node number 0 and 1
+
+// NEW LOGIC
+struct node *deleteAtIndexN(struct node *head, int index)
+{
+    struct node *p = head;
+    struct node *q = head->next;
+    int i = 0;
+    while (i != index - 1)
+    {
+        p = p->next;
+        q = q->next;
+        i++;
+    }
+    p->next = q->next;
+    free(q);
+    return head;
+}
 
 // Deleting the end node
 struct node *deleteEndNode(struct node *head)
@@ -55,6 +73,22 @@ struct node *deleteEndNode(struct node *head)
         i++;
     }
     struct node *q = p->next;
+    p->next = NULL;
+    free(q);
+    return head;
+}
+//This logic also has some possible case problems even tho we just have to delete the last node
+
+//NEW LOGIC
+struct node *deleteEndNodeN(struct node *head)
+{
+    struct node *p = head;
+    struct node *q = head->next;
+    for (i = 0; q->next != NULL; i++)
+    {
+        p = p->next;
+        q = q->next;
+    }
     p->next = NULL;
     free(q);
     return head;
