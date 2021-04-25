@@ -104,17 +104,19 @@ struct node *deleteValue(struct node *head, int value)
         p = p->next;
         q = q->next;
     }
-    if (q->data == NULL)
-    {
-        printf("Value not found in the linked list.");
-    }
-    else
+    if ((q->data) == value)
     {
         p->next = q->next;
         free(q);
     }
+    else
+    {
+        printf("Value not found in the linked list.");
+    }
     return head;
 }
+//This cannot delete the very first node and t do that we aould have to use the delete head
+//node function that we created above.
 
 int main()
 {
