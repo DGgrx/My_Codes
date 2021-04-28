@@ -102,11 +102,47 @@ void printStack(struct node *top)
     printf("######################\n\n");
 }
 
+//peek()
+int peek(struct node *top, int index)
+{
+    struct node *p = top;
+    for (int i = 0; i < index - 1 && p != NULL; i++)
+    {
+        p = p->next;
+    }
+    if (p != NULL)
+    {
+        return p->data;
+    }
+    else
+    {
+        printf("The entered index was invalid !/n");
+    }
+}
+
+//stackTop()
+int stackTop(struct node *top)
+{
+    return top->data;
+}
+
+//stackBottom()
+int stackBottom(struct node *top)
+{
+    struct node *ptr = top;
+    while (ptr->next != NULL)
+    {
+        ptr = ptr->next;
+    }
+    return ptr->data;
+}
+
 int main()
 {
     struct node *top = NULL;
     int numb;
     int val;
+    int index;
 repeat:
     printf("\n######################\n");
     printf("Press 1 to push.\nPress 2 to pop.\nPress 3 to Check if stack isEmpty.\nPress 4 to check if stack isFull.\nPress 5 to print the stack.\nPress 6 to peek into the Stack.\nPress 7 to get the Top element.\nPress 8 to get the Bottom element.\nPress 0 to exit.\n :: ");
@@ -152,17 +188,17 @@ repeat:
     case 5:
         printStack(top);
         break;
-    // case 6:
-    //     printf("Enter the Index you wanna peek: ");
-    //     scanf("%d", &index);
-    //     printf("\nThe value at index %d is %d.\n", index, peek(s, index));
-    //     break;
-    // case 7:
-    //     printf("The Value at the Top of the Stack is %d", stackTop(s));
-    //     break;
-    // case 8:
-    //     printf("The value at the bottom of the stack is %d", stackBottom(s));
-    //     break;
+    case 6:
+        printf("Enter the Index you wanna peek: ");
+        scanf("%d", &index);
+        printf("\nThe value at index %d is %d.\n", index, peek(top, index));
+        break;
+    case 7:
+        printf("The Value at the Top of the Stack is %d", stackTop(top));
+        break;
+    case 8:
+        printf("The value at the bottom of the stack is %d\n", stackBottom(top));
+        break;
     case 0:
         return 0;
     default:
