@@ -97,6 +97,18 @@ int peek(struct stack *ptr, int index)
     }
 }
 
+//stackTop()
+int stackTop(struct stack *ptr)
+{
+    return ptr->arr[ptr->top];
+}
+
+//stackBottom()
+int stackBottom(struct stack *ptr)
+{
+    return ptr->arr[0];
+}
+
 int main()
 {
     struct stack *s = (struct stack *)malloc(sizeof(struct stack));
@@ -111,7 +123,10 @@ int main()
     int index;
 repeat:
     printf("\n######################\n");
-    printf("Press 1 to push.\nPress 2 to pop.\nPress 3 to Check if stack isEmpty.\nPress 4 to check if stack isFull.\nPress 5 to print the stack.\nPress 6 to peek into the Stack.\nPress 0 to exit.\n :: ");
+    printf("Press 1 to push.\nPress 2 to pop.\nPress 3 to Check if stack isEmpty.\nPress 4 to
+     check if stack isFull.\nPress 5 to print the stack.\nPress 6 to peek into the 
+     Stack.\nPress 7 to get the Top element.\n Press 8 to get the Bottom 
+     element.\nPress 0 to exit.\n :: ");
     scanf("%d", &numb);
     printf("\n######################\n\n");
 
@@ -153,7 +168,15 @@ repeat:
         scanf("%d", &index);
         printf("\nThe value at index %d is %d.\n", index, peek(s, index));
         break;
+    case 7:
+        printf("The Value at the Top of the Stack is %d", stackTop(s));
+        break;
+    case 8:
+        printf("The value at the bottom of the stack is %d", stackBottom(s));
+        break;
     case 0:
+        return 0;
+    default:
         return 0;
     }
     goto repeat;
