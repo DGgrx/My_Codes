@@ -8,7 +8,7 @@ struct stack
     int *arr;
 };
 
-//isEmpty()
+//isEmpty() - checks if the stack is empty or not
 int isEmpty(struct stack *ptr)
 {
     if (ptr->top == -1)
@@ -21,7 +21,7 @@ int isEmpty(struct stack *ptr)
     }
 }
 
-//ifFull()
+//ifFull() - checks is the stack is full or not
 int isFull(struct stack *ptr)
 {
     if (ptr->top == (ptr->size - 1))
@@ -43,7 +43,7 @@ int main()
 
     //Defining a pointer to a stack would be more feasible because then we will be able to
     //pass this stack to functions
-    struct stack *s;
+    struct stack *s = (struct stack *)malloc(sizeof(struct stack));
     s->size = 80;
     s->top = -1;
     s->arr = (int *)malloc(s->size * sizeof(int));
@@ -51,6 +51,35 @@ int main()
     //Manually pushing elemnt in the stack
     s->arr[0] = 7;
     s->top++;
+
+    //push() - pushes the element to the top of the array
+    void push(struct stack * ptr, int val)
+    {
+        if (isFull(ptr))
+        {
+            printf("Stack is Full.\n");
+        }
+        else
+        {
+            ptr->top++;
+            ptr->arr[ptr->top] = val;
+        }
+    }
+
+    //pop() - removes the top value from the array
+    int pop(struct stack * ptr)
+    {
+        if (isEmpty(ptr))
+        {
+            printf("The Stack is already Empty.\n");
+        }
+        else
+        {
+            int val = ptr->arr[ptr->top];
+            ptr->top--;
+            return val;
+        }
+    }
 
     //Checking if the stack is empty or not
     if (isEmpty(s))
