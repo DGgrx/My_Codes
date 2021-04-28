@@ -123,10 +123,7 @@ int main()
     int index;
 repeat:
     printf("\n######################\n");
-    printf("Press 1 to push.\nPress 2 to pop.\nPress 3 to Check if stack isEmpty.\nPress 4 to
-     check if stack isFull.\nPress 5 to print the stack.\nPress 6 to peek into the 
-     Stack.\nPress 7 to get the Top element.\n Press 8 to get the Bottom 
-     element.\nPress 0 to exit.\n :: ");
+    printf("Press 1 to push.\nPress 2 to pop.\nPress 3 to Check if stack isEmpty.\nPress 4 to check if stack isFull.\nPress 5 to print the stack.\nPress 6 to peek into the Stack.\nPress 7 to get the Top element.\n Press 8 to get the Bottom element.\nPress 0 to exit.\n :: ");
     scanf("%d", &numb);
     printf("\n######################\n\n");
 

@@ -43,6 +43,7 @@ int main()
 
     //Defining a pointer to a stack would be more feasible because then we will be able to
     //pass this stack to functions
+
     struct stack *s = (struct stack *)malloc(sizeof(struct stack));
     s->size = 80;
     s->top = -1;
