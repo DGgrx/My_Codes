@@ -18,6 +18,70 @@ void traversal(struct node *head)
     } while (ptr != head);
 }
 
+//deleting the head node
+struct node *deleteHeadNode(struct node *head)
+{
+    struct node *p = head;
+    struct node *q = head;
+    while (q->next != head)
+    {
+        q = q->next;
+    }
+    head = head->next;
+    q->next = head;
+    free(p);
+    return head;
+}
+
+//Deleting a Particular node at index
+struct node *deleteAtIndex(struct node *head, int index)
+{
+    struct node *p = head;
+    struct node *q = head->next;
+    for (int i = 0; i != (index-1); i++)
+    {
+        p=p->next;
+        q=q->next;
+    }
+    p->next=q->next;
+    free(q);
+    return head;
+}
+//Does not delete the head node
+
+
+//Deleting the end node
+struct node* deleteEndNode(struct node*head)
+{
+    struct node*p=head;
+    struct node*q=head->next;
+    for(int i=0;q->next!=head;i++)
+    {
+        p=p->next;
+        q=q->next;
+    }
+    p->next=q->next;
+    free(q);
+    return head;
+}
+
+
+//Deleting a particular Value
+struct node* deleteParticularVal(struct node* head, int value)
+{
+    struct node*p=head;
+    struct node*q=head->next;
+    for(int i=0;q->data!= value;i++)
+    {
+        p=p->next;
+        q=q->next;
+    }
+    p->next=q->next;
+    free(q);
+    return head;
+}
+//Does not delete the head node
+
 int main()
 {
     struct node *head = (struct node *)malloc(sizeof(struct node));
@@ -41,6 +105,14 @@ int main()
     fourth->data = 10;
     fourth->next = head;
 
+    printf("\nCircular Linked List before Insertion: \n");
+    traversal(head);
+
+    printf("\nCircular Linked List after Insertion: \n");
+    // head = deleteHeadNode(head);
+    // head= deleteAtIndex(head, 1);
+    // head= deleteEndNode(head);
+    // head= deleteParticularVal(head, 23);
     traversal(head);
 
     return 0;

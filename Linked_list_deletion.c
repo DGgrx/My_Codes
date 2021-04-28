@@ -147,7 +147,7 @@ int main()
     // head = deleteHead(head);
     // head = deleteAtIndexN(head, 2);
     // head = deleteEndNodeN(head);
-    head = deleteValue(head, 34);
+    // head = deleteValue(head, 34);
     traversal(head);
 
     return 0;
