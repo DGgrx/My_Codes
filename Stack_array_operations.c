@@ -183,3 +183,5 @@ repeat:
 
     return 0;
 }
+
+//The time complexityfor all these functions is O(1) [Big of 1]
