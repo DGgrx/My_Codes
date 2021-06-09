@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//The most important concept in implementing the circular queue is the circular incrementation
+
 //Implementing the Q
-struct queue
+struct circular_q
 {
     int size;
     int f;
@@ -11,16 +13,16 @@ struct queue
 };
 
 //isFull() - Check if queue is Full or not
-int isFull(struct queue *q)
+int isFull(struct circular_q *q)
 {
-    if (q->r == q->size - 1)
+    if ((q->r + 1) % q->size == q->f)
         return 1;
 
     return 0;
 }
 
 //isEmpty() - Check is the queue is Empty or not
-int isEmpty(struct queue *q)
+int isEmpty(struct circular_q *q)
 {
     if (q->f == q->r)
         return 1;
@@ -29,7 +31,7 @@ int isEmpty(struct queue *q)
 }
 
 //enque() - This will add elements in the Q
-void enque(struct queue *q, int val)
+void enque(struct circular_q *q, int val)
 {
     if (isFull(q))
     {
@@ -37,13 +39,13 @@ void enque(struct queue *q, int val)
     }
     else
     {
-        q->r++;
+        q->r = (q->r + 1) % q->size; //Circular incrementation
         q->arr[q->r] = val;
     }
 }
 
 //deque() - This will delete element from the queue
-int deque(struct queue *q)
+int deque(struct circular_q *q)
 {
     int a;
     if (isEmpty(q))
@@ -53,14 +55,14 @@ int deque(struct queue *q)
     }
     else
     {
-        q->f++;
+        q->f = (q->f + 1) % q->size;
         a = q->arr[q->f];
     }
     return a;
 }
 
 //printQ()
-void printQ(struct queue *q)
+void printQ(struct circular_q *q)
 {
     int point = q->f;
     while (point != q->r)
@@ -72,10 +74,10 @@ void printQ(struct queue *q)
 
 int main()
 {
-    struct queue *q = (struct queue *)malloc(sizeof(struct queue));
+    struct circular_q *q = (struct circular_q *)malloc(sizeof(struct circular_q));
     q->size = 20;
-    q->f = -1;
-    q->r = -1;
+    q->f = 0; // This should be set to 0 instead of -1 because the circular incrementation
+    q->r = 0; // will not give a remainder of -1 at any cost.
     q->arr = (int *)malloc(q->size * sizeof(int));
 
     if (isEmpty(q))
@@ -103,11 +105,3 @@ int main()
     }
     return 0;
 }
-
-/* Q using arrya has a drawback that :
- 1. The space is not used efficiently (Due to the way we have created the Q if we fill the array
-    and then empty is again the size of our q will be diminshed.)
- 
- 2. If we set the size to 4 and then enque it 4 times and the deque it 4 times, then our Q will be
-    empty and full at the same time. empty because the conditions f==r and r==size-1 are satisfied 
-    at the same time 

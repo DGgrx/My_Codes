@@ -69,13 +69,11 @@ char pop(struct stack *ptr)
 void printStack(struct stack *ptr)
 {
     int i = 0;
-    printf("\n\n######################\n");
     while (i != ptr->top + 1)
     {
         printf("%d \n", ptr->arr[i]);
         i++;
     }
-    printf("######################\n\n");
 }
 
 //stackTop()
@@ -147,7 +145,7 @@ char *infixToPostfix(char *infix)
 
 int main()
 {
-    char *infix = "a+b-5/7";
+    char *infix = "A+B*(C+D)/F+D*E";
     printf("Infix is: %s\n", infix);
     printf("Postfix is: %s", infixToPostfix(infix));
 
